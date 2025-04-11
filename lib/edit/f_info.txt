@@ -70,7 +70,7 @@ F:PWALK | PPASS | MWALK | MPASS
 N:2:invisible trap
 G:.:w
 B:1
-P:5
+P:9
 F:PWALK | PPASS | MWALK | MPASS | TRAP | HIDDEN
 K:DISARM:1:100
 
@@ -85,16 +85,17 @@ F:PWALK | PPASS
 
 N:4:open door
 G:':U
-P:15
+P:7
 F:PWALK | PPASS | MWALK | MPASS | DOOR | CLOSEABLE | ICKY | OBJECT | MARK
 K:CLOSE:32:100
 
-# 0x05 --> broken door
+### Adding curtains, way better and more flavourful than broken doors.
+# 0x05 --> drawn curtain
 
-N:5:broken door
-G:':u
-P:12
-F:PWALK | PPASS | MWALK | MPASS | ICKY | OBJECT | MARK | DOOR | BROKEN
+N:5:drawn curtain
+G:':b
+P:15
+F:PWALK | PPASS | MWALK | MPASS | ICKY | MARK | OBJECT | NO_LOS
 
 # 0x06 --> up stairs
 
@@ -131,17 +132,18 @@ G:.:r
 F:PWALK | PPASS | MWALK | MPASS
 
 N:13:wooden floor
-G:.:s
+G:.:U
 F:PWALK | PPASS | MWALK | MPASS
 
 N:14:pebbles
 G:.:D
 F:PWALK | PPASS | MWALK | MPASS
 
-# was "solidified lava"
+# "solidified lava"
 
-N:15:basalt
+N:15:basalt floor
 G:.:D
+P:2
 F:PWALK | PPASS | MWALK | MPASS
 
 
@@ -152,10 +154,10 @@ F:PWALK | PPASS | MWALK | MPASS
 
 N:32:door
 G:+:U
-P:17
+P:10
 F:PPASS | MPASS | NO_LOS | DOOR | ICKY | OBJECT | MARK | CLOSED
 K:OPEN:4:100
-K:BASH:5:100
+K:BASH:149:100
 
 # Pillar
 N:33:pillar
@@ -165,50 +167,45 @@ F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG
 K:TUNNEL:1:100
 
 
-# 0x30 --> secret door
+# 0x30 --> secret door  #
 
 N:48:granite wall
 G:#:W
 P:10:30
 F:PPASS | MPASS | NO_LOS | DOOR | HIDDEN | ICKY | OBJECT | MARK | DIG
-# 0x31 --> rubble
 K:SEARCH:146:100
 K:TUNNEL:1:100
 
+#0x31 --> rubble
 N:49:pile of rubble
-G:::w
+G:%:U
 P:10:10
 F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG | DIG_OBJ
 
 # 0x32 --> magma vein
 
 N:50:magma vein
-G:#:s
+G:#:o
 P:12:10
 F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG
 
 # 0x33 --> quartz vein
 
-N:51:quartz vein
-G:#:s
-P:11:20
+N:51:blood stained rock wall
+G:#:r
+P:12:10
 F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG
 
-# 0x34 --> magma vein + treasure
-# This terrain type may not actually be needed...
-N:52:magma vein
-G:#:s
+N:52:mossy rock wall
+G:#:g
 P:12:10
-F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG | DIG_GOLD | HIDDEN
-K:SEARCH:54:100
+F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG |
 
-# 0x35 --> quartz vein + treasure
-# This terrain type may not actually be needed...
-N:53:quartz vein
-G:#:s
-P:11:20
-F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG | DIG_GOLD | HIDDEN
-K:SEARCH:55:100
+N:53:blue quartz vein
+G:#:B
+P:12:10
+F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG |
+
 
 # 0x36 --> magma vein + known treasure
 
@@ -220,14 +217,14 @@ F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG | DIG_GOLD
 # 0x37 --> quartz vein + known treasure
 
 N:55:quartz vein with treasure
-G:*:o
+G:*:B
 P:19:20
 F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG | DIG_GOLD
 
 # 0x38 --> granite wall -- basic
 
-N:56:granite wall
-G:#:W
+N:56:black granite wall
+G:#:D
 P:10:40
 F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG
 
@@ -241,21 +238,21 @@ F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG
 # 0x3A --> granite wall -- outer
 
 N:58:granite wall
-G:#:W
+G:#:s
 P:10:40
 F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG
 
 # 0x3B --> granite wall -- solid
 
 N:59:granite wall
-G:#:W
+G:#:s
 P:10:40
 F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG
 
 # 0x3C --> permanent wall -- basic
 
 N:60:permanent wall
-G:#:w
+G:#:u
 P:10
 F:NO_LOS | ICKY | PERM | OBJECT | MARK
 
@@ -276,7 +273,7 @@ F:NO_LOS | ICKY | PERM | OBJECT | MARK
 # 0x3F --> permanent wall -- solid
 
 N:63:permanent wall
-G:#:w
+G:#:u
 P:10
 F:NO_LOS | ICKY | PERM | OBJECT | MARK
 
@@ -462,7 +459,7 @@ F:PWALK | PPASS | MWALK | MPASS | ICKY | OBJECT
 # dead tree on snow
 
 N:134:dead tree
-G:.:u
+G:%:D
 F:PWALK | PPASS | MWALK | MPASS | ICKY | OBJECT
 
 N:135:snow
@@ -514,7 +511,7 @@ F:PWALK | PPASS | MWALK | MPASS | ICKY | OBJECT | MARK
 
 N:145:open door
 G:':U
-P:15
+P:10
 F:PWALK | PPASS | MWALK | MPASS | DOOR | CLOSEABLE | ICKY | OBJECT | MARK
 K:CLOSE:146:100
 
@@ -534,7 +531,7 @@ K:BASH:149:100
 
 N:148:open door
 G:':U
-P:15
+P:10
 F:PWALK | PPASS | MWALK | MPASS | DOOR | CLOSEABLE | ICKY | OBJECT | MARK
 K:CLOSE:147:100
 
@@ -566,7 +563,7 @@ K:BASH:154:100
 
 N:153:open door
 G:':U
-P:15
+P:10
 F:PWALK | PPASS | MWALK | MPASS | DOOR | CLOSEABLE | ICKY | OBJECT | MARK
 K:CLOSE:152:100
 
@@ -575,7 +572,7 @@ G:':u
 P:12
 F:PWALK | PPASS | MWALK | MPASS | ICKY | OBJECT | MARK | DOOR | BROKEN
 
-# secret door
+# secret door # 
 N:155:granite wall
 G:#:W
 P:10:30
@@ -591,7 +588,7 @@ K:OPEN:157:100
 
 N:157:open door
 G:':U
-P:15
+P:10
 F:PWALK | PPASS | MWALK | MPASS | DOOR | CLOSEABLE | ICKY | OBJECT | MARK
 K:CLOSE:156:100
 
@@ -611,27 +608,27 @@ F:PWALK | PPASS | MWALK | MPASS | EXIT_DOWN | ICKY | PERM | OBJECT | MARK
 #### horror dungeons
 # walls
 N:160:granite wall
-G:#:W
+G:#:s
 P:10:40
 F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG
 K:TUNNEL:1:40
 
 N:161:permanent wall
-G:#:w
+G:#:u
 P:10
 F:NO_LOS | ICKY | PERM | OBJECT | MARK
 
 # doors
 N:162:door
-G:+:U
+G:+:r
 P:17
 F:PPASS | MPASS | NO_LOS | DOOR | ICKY | OBJECT | MARK | CLOSED
 K:OPEN:163:100
 K:BASH:164:100
 
 N:163:open door
-G:':U
-P:15
+G:':r
+P:10
 F:PWALK | PPASS | MWALK | MPASS | DOOR | CLOSEABLE | ICKY | OBJECT | MARK
 K:CLOSE:162:100
 
@@ -640,9 +637,9 @@ G:':u
 P:12
 F:PWALK | PPASS | MWALK | MPASS | ICKY | OBJECT | MARK | DOOR | BROKEN
 
-# secret door
+# secret door #
 N:165:granite wall
-G:#:W
+G:#:s
 P:10:30
 F:PPASS | MPASS | NO_LOS | DOOR | HIDDEN | ICKY | OBJECT | MARK | DIG
 K:SEARCH:166:100
@@ -656,18 +653,18 @@ K:OPEN:167:100
 
 N:167:open door
 G:':U
-P:15
+P:10
 F:PWALK | PPASS | MWALK | MPASS | DOOR | CLOSEABLE | ICKY | OBJECT | MARK
 K:CLOSE:166:100
 
 # stairs
 N:168:up staircase
-G:<:w
+G:<:R
 P:18
 F:PWALK | PPASS | MWALK | MPASS | EXIT_UP | ICKY | PERM | OBJECT | MARK
 
 N:169:down staircase
-G:>:w
+G:>:R
 P:18
 F:PWALK | PPASS | MWALK | MPASS | EXIT_DOWN | ICKY | PERM | OBJECT | MARK
 
@@ -696,7 +693,7 @@ K:BASH:174:100
 
 N:173:open door
 G:':U
-P:15
+P:10
 F:PWALK | PPASS | MWALK | MPASS | DOOR | CLOSEABLE | ICKY | OBJECT | MARK
 K:CLOSE:172:100
 
@@ -705,7 +702,7 @@ G:':u
 P:12
 F:PWALK | PPASS | MWALK | MPASS | ICKY | OBJECT | MARK | DOOR | BROKEN
 
-# secret door
+# secret door 
 N:175:granite wall
 G:#:W
 P:10:30
@@ -721,7 +718,7 @@ K:OPEN:177:100
 
 N:177:open door
 G:':U
-P:15
+P:10
 F:PWALK | PPASS | MWALK | MPASS | DOOR | CLOSEABLE | ICKY | OBJECT | MARK
 K:CLOSE:176:100
 
@@ -806,7 +803,7 @@ K:BASH:191:100
 
 N:190:open door
 G:':U
-P:15
+P:10
 F:PWALK | PPASS | MWALK | MPASS | DOOR | CLOSEABLE | ICKY | OBJECT | MARK
 K:CLOSE:189:100
 
@@ -814,5 +811,16 @@ N:191:broken door
 G:':u
 P:12
 F:PWALK | PPASS | MWALK | MPASS | ICKY | OBJECT | MARK | DOOR | BROKEN
+
+### Curtains ---> NO_LOS ,project of implemtenting curtains, which will be always drawn.
+# The reason of the NO_LOS, is, you see a curtain ahead of you, can't see on the other side,
+# once you cross the curtain, it falls on its original position, therefore you can't see what
+# it's on the side you came from. This is a interesting roleplaying feature in my DnD sessions,
+# and needs to be in the game.
+N:192:drawn curtain
+G:':b
+P:14
+F:PWALK | PPASS | NO_LOS | MWALK | MPASS | ICKY | OBJECT | MARK | OBJECT
+
 
 
