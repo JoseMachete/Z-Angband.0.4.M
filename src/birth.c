@@ -368,25 +368,25 @@ static void get_money(void)
 	int i, gold;
 
 	/* Social Class determines starting gold */
-	gold = (p_ptr->rp.sc * 6) + rand_range(300, 400);
+	gold = (p_ptr->rp.sc * 7) + rand_range(400, 500);
 
 	/* Process the stats */
 	for (i = 0; i < A_MAX; i++)
 	{
 		/* Mega-Hack -- reduce gold for high stats */
-		if (stat_use[i] >= 180 + 50) gold -= 300;
-		else if (stat_use[i] >= 180 + 20) gold -= 200;
-		else if (stat_use[i] > 180) gold -= 150;
+		if (stat_use[i] >= 350 + 50) gold -= 400;
+		else if (stat_use[i] >= 280 + 20) gold -= 300;
+		else if (stat_use[i] > 380) gold -= 300;
 		else
 			gold -= (stat_use[i] - 80);
 	}
 
 	/* Bonus for humans */
 	if (p_ptr->rp.prace == RACE_HUMAN)
-		gold += 300;
+		gold += 500;
 
-	/* Minimum 100 gold */
-	if (gold < 100) gold = 100;
+	/* Minimum 250 gold */
+	if (gold < 250) gold = 250;
 
 	/* Save the gold */
 	p_ptr->au = gold;
@@ -587,6 +587,7 @@ static void wield_all(void)
 /*
  * Each player starts out with a few items, given as tval/sval pairs.
  * In addition, he always has some food and a few torches.
+ * Added boots to everyone because nobody goes around barefooted.
  */
 static const byte player_init[MAX_CLASS][3][2] =
 {
@@ -595,6 +596,7 @@ static const byte player_init[MAX_CLASS][3][2] =
 	 {TV_RING, SV_RING_RES_FEAR},	/* Warriors need it! */
 	 {TV_SWORD, SV_BROAD_SWORD},
 	 {TV_HARD_ARMOR, SV_CHAIN_MAIL}
+	 {TV_BOOTS, SV_PAIR_OF_SOFT_LEATHER_BOOTS}
 	 },
 
 	{
@@ -615,6 +617,7 @@ static const byte player_init[MAX_CLASS][3][2] =
 	 /* Rogue */
 	 {TV_CLOAK, SV_CLOAK},
 	 {TV_SWORD, SV_SHORT_SWORD},
+	 {TV_BOOTS, SV_PAIR_OF_SOFT_LEATHER_BOOTS}
 	 {TV_SOFT_ARMOR, SV_SOFT_LEATHER_ARMOR}
 	 },
 
@@ -622,6 +625,7 @@ static const byte player_init[MAX_CLASS][3][2] =
 	 /* Ranger */
 	 {TV_BOW, SV_SHORT_BOW},
 	 {TV_SWORD, SV_DAGGER},
+	 {TV_BOOTS, SV_PAIR_OF_SOFT_LEATHER_BOOTS}
 	 {TV_SOFT_ARMOR, SV_SOFT_LEATHER_ARMOR}
 	 },
 
@@ -629,6 +633,7 @@ static const byte player_init[MAX_CLASS][3][2] =
 	 /* Paladin */
 	 {TV_HARD_ARMOR, SV_METAL_SCALE_MAIL},
 	 {TV_SWORD, SV_BROAD_SWORD},
+	 {TV_BOOTS, SV_PAIR_OF_SOFT_LEATHER_BOOTS}
 	 {TV_SCROLL, SV_SCROLL_PROTECTION_FROM_EVIL}
 	 },
 
@@ -636,6 +641,7 @@ static const byte player_init[MAX_CLASS][3][2] =
 	 /* Warrior-Mage */
 	 {TV_HELM, SV_METAL_CAP},
 	 {TV_SWORD, SV_SHORT_SWORD},
+	 {TV_BOOTS, SV_PAIR_OF_SOFT_LEATHER_BOOTS}
 	 {TV_HARD_ARMOR, SV_METAL_SCALE_MAIL}
 	 },
 
@@ -643,6 +649,7 @@ static const byte player_init[MAX_CLASS][3][2] =
 	 /* Chaos Warrior */
 	 {TV_HELM, SV_METAL_CAP},
 	 {TV_SWORD, SV_BROAD_SWORD},
+	 {TV_BOOTS, SV_PAIR_OF_SOFT_LEATHER_BOOTS}
 	 {TV_HARD_ARMOR, SV_METAL_SCALE_MAIL}
 	 },
 
@@ -657,6 +664,7 @@ static const byte player_init[MAX_CLASS][3][2] =
 	 /* Mindcrafter */
 	 {TV_SWORD, SV_DAGGER},
 	 {TV_POTION, SV_POTION_RES_WIS},
+	 {TV_BOOTS, SV_PAIR_OF_SOFT_LEATHER_BOOTS}
 	 {TV_SOFT_ARMOR, SV_SOFT_LEATHER_ARMOR},
 	 },
 
@@ -664,6 +672,7 @@ static const byte player_init[MAX_CLASS][3][2] =
 	 /* High Mage */
 	 {TV_WAND, SV_WAND_MAGIC_MISSILE},
 	 {TV_SWORD, SV_DAGGER},
+	 {TV_BOOTS, SV_PAIR_OF_SOFT_LEATHER_BOOTS}
 	 {TV_RING, SV_RING_SUSTAIN_INT}
 	 },
 };
@@ -737,8 +746,8 @@ static void player_outfit(void)
 	{
 		/* Hack -- Give the player some torches */
 		q_ptr = object_prep(lookup_kind(TV_LITE, SV_LITE_TORCH));
-		q_ptr->number = (byte)rand_range(5, 7);
-		q_ptr->timeout = rand_range(5, 7) * 500;
+		q_ptr->number = (byte)rand_range(6, 8);
+		q_ptr->timeout = rand_range(6, 8) * 500;
 		q_ptr->pval = 0;
 		object_aware(q_ptr);
 		object_known(q_ptr);
@@ -763,7 +772,7 @@ static void player_outfit(void)
 	if (!jump_end_game && !ironman_nightmare && !ironman_downward) {
 		q_ptr = object_prep(lookup_kind(TV_SPIRIT, 2));
 
-		q_ptr->number = 3;
+		q_ptr->number = 0;
 
 		object_aware(q_ptr); object_known(q_ptr);
 		/* These objects give no score */
@@ -1538,7 +1547,7 @@ static bool player_birth_aux_3(void)
 					"The auto-roller will generate 500 characters and try to pick\n"
 					"the one with the best stats, according to the weightings you\n"
 					"choose below. Enter a value from 1-100 for each stat. If the\n"
- 					"sum of the weights is 86, and each weight is between 5 - 20,\n"
+ 					"sum of the weights is 90, and each weight is between 5 - 20,\n"
 					"then the weight will be used directly for the stats.\n");
 
 		/* Prompt for the stat weights */
@@ -1605,7 +1614,7 @@ static bool player_birth_aux_3(void)
 	while (TRUE) {
 		int col = 42;
 
-		if (useweights && (v == 86)) {
+		if (useweights && (v == 90)) {
 			/* use the weights as stats directly */
 			for (i = 0; i < A_MAX; i++) {
 				/* copy the stats to stat_use so the money generated is correct */

@@ -2282,7 +2282,7 @@ static void calc_mana(void)
 				 * For these classes, mana is halved if armour
 				 * is 30 pounds over their weight limit.
 				 */
-				msp -= msp * (cur_wgt - max_wgt) / 600 + 1;
+				msp -= msp * (cur_wgt - max_wgt) / 700 + 1;
 				break;
 			}
 
@@ -2290,7 +2290,7 @@ static void calc_mana(void)
 			case CLASS_MINDCRAFTER:
 			{
 				/* Mana halved if armour is 40 pounds over weight limit. */
-				msp -= msp * (cur_wgt - max_wgt) / 800 + 1;
+				msp -= msp * (cur_wgt - max_wgt) / 900 + 1;
 				break;
 			}
 
@@ -2299,7 +2299,7 @@ static void calc_mana(void)
 			case CLASS_MONK:
 			{
 				/* Mana halved if armour is 50 pounds over weight limit. */
-				msp -= msp * (cur_wgt - max_wgt) / 1000 + 1;
+				msp -= msp * (cur_wgt - max_wgt) / 1100 + 1;
 				break;
 			}
 
@@ -2308,7 +2308,7 @@ static void calc_mana(void)
 			case CLASS_WARRIOR_MAGE:
 			{
 				/* Mana halved if armour is 60 pounds over weight limit. */
-				msp -= msp * (cur_wgt - max_wgt) / 1200 + 1;
+				msp -= msp * (cur_wgt - max_wgt) / 1300 + 1;
 				break;
 			}
 
@@ -2340,7 +2340,7 @@ static void calc_mana(void)
 		mhp = p_ptr->player_hp[p_ptr->lev - 1] + (bonus * p_ptr->lev / 2);
 
 		/* Always have at least one hitpoint per level */
-		if (mhp < p_ptr->lev + 1) mhp = p_ptr->lev + 1;
+		if (mhp < p_ptr->lev + 5) mhp = p_ptr->lev + 5;
 
 		/* Factor in the hero / superhero settings */
 		if (query_timed(TIMED_HERO)) mhp += 10;
@@ -2422,7 +2422,7 @@ static void calc_hitpoints(void)
 	mhp = p_ptr->player_hp[p_ptr->lev - 1] + (bonus * p_ptr->lev / 2);
 
 	/* Always have at least one hitpoint per level */
-	if (mhp < p_ptr->lev + 1) mhp = p_ptr->lev + 1;
+	if (mhp < p_ptr->lev + 5) mhp = p_ptr->lev + 5;
 
 	/* Factor in the hero / superhero settings */
 	if (query_timed(TIMED_HERO)) mhp += 10;
@@ -2488,21 +2488,21 @@ static void calc_torch(void)
 			/* Artifact Lites provide permanent, bright, lite */
 			if (FLAG(o_ptr, TR_INSTA_ART))
 			{
-				p_ptr->cur_lite += 3;
+				p_ptr->cur_lite += 4;
 				continue;
 			}
 
 			/* Lanterns (with fuel) provide more lite */
 			if ((o_ptr->sval == SV_LITE_LANTERN) && (o_ptr->timeout > 0))
 			{
-				p_ptr->cur_lite += 2;
+				p_ptr->cur_lite += 3;
 				continue;
 			}
 
 			/* Torches (with fuel) provide some lite */
 			if ((o_ptr->sval == SV_LITE_TORCH) && (o_ptr->timeout > 0))
 			{
-				p_ptr->cur_lite += 1;
+				p_ptr->cur_lite += 2;
 				continue;
 			}
 		}
@@ -2648,7 +2648,7 @@ static sint add_special_melee_skill(byte pclass, object_type *o_ptr)
 			 * Can use 15 lb weapons without penalty at level 1,
 			 * and 45 lb weapons without penalty at 50th level.
 			 */
-			add_skill = 25 + p_ptr->lev - (weight / 6);
+			add_skill = 30 + p_ptr->lev - (weight / 6);
 			if (add_skill > 0) add_skill = 0;
 			if (add_skill < -10) add_skill = -10;
 			break;
@@ -2662,7 +2662,7 @@ static sint add_special_melee_skill(byte pclass, object_type *o_ptr)
 			 * Can use 6 lb weapons without penalty at level 1,
 			 * and 16 lb weapons without penalty at 50th level.
 			 */
-			add_skill = 20 + (2 * p_ptr->lev / 3) - (weight / 3);
+			add_skill = 25 + (2 * p_ptr->lev / 3) - (weight / 3);
 			if (add_skill > 0) add_skill = 0;
 			if (add_skill < -30) add_skill = -30;
 			break;
@@ -2675,7 +2675,7 @@ static sint add_special_melee_skill(byte pclass, object_type *o_ptr)
 			 * Can use 12 lb weapons without penalty at level 1,
 			 * and 22 lb weapons without penalty at 50th level.
 			 */
-			add_skill = 30 + (1 * p_ptr->lev / 2) - (weight / 4);
+			add_skill = 35 + (1 * p_ptr->lev / 2) - (weight / 4);
 			if (add_skill > 0) add_skill = 0;
 			if (add_skill < -25) add_skill = -25;
 			break;
@@ -2695,7 +2695,7 @@ static sint add_special_melee_skill(byte pclass, object_type *o_ptr)
 			}
 			else
 			{
-				add_skill = 33 + (2 * p_ptr->lev / 3) - (weight / 3);
+				add_skill = 35 + (2 * p_ptr->lev / 3) - (weight / 4);
 				if (add_skill > 0) add_skill = add_skill / 2;
 				if (add_skill > 15) add_skill = 15;
 				if (add_skill < -25) add_skill = -25;
@@ -2710,7 +2710,7 @@ static sint add_special_melee_skill(byte pclass, object_type *o_ptr)
 			 * Can use 12 lb weapons without penalty at level 1,
 			 * and 25 lb weapons without penalty at 50th level.
 			 */
-			add_skill = 25 + (1 * p_ptr->lev / 2) - (weight / 5);
+			add_skill = 30 + (1 * p_ptr->lev / 2) - (weight / 5);
 			if (add_skill > 0) add_skill = 0;
 			if (add_skill < -20) add_skill = -20;
 			break;
@@ -2725,7 +2725,7 @@ static sint add_special_melee_skill(byte pclass, object_type *o_ptr)
 			 * Can use 15 lb weapons without penalty at level 1,
 			 * and 45 lb weapons without penalty at 50th level.
 			 */
-			add_skill = 25 + p_ptr->lev - (weight / 6);
+			add_skill = 30 + p_ptr->lev - (weight / 6);
 			if (add_skill > 0) add_skill = 0;
 			if (add_skill < -10) add_skill = -10;
 			break;
@@ -2745,7 +2745,7 @@ static sint add_special_melee_skill(byte pclass, object_type *o_ptr)
 			}
 			else
 			{
-				add_skill = 16 + (p_ptr->lev / 2) - (weight / 3);
+				add_skill = 25 + (p_ptr->lev / 2) - (weight / 3);
 				if (add_skill > 0) add_skill = 0;
 				if (add_skill < -30) add_skill = -30;
 			}
@@ -2759,7 +2759,7 @@ static sint add_special_melee_skill(byte pclass, object_type *o_ptr)
 			 * Can use 6 lb weapons without penalty at level 1,
 			 * and 16 lb weapons without penalty at 50th level.
 			 */
-			add_skill = 20 + (2 * p_ptr->lev / 3) - (weight / 3);
+			add_skill = 25 + (2 * p_ptr->lev / 3) - (weight / 3);
 			if (add_skill > 0) add_skill = 0;
 			if (add_skill < -30) add_skill = -30;
 			break;
@@ -2799,11 +2799,11 @@ static sint add_special_missile_skill(byte pclass)
 			 */
 			if (p_ptr->ammo_tval == TV_SHOT)
 			{
-				add_skill = 0 - p_ptr->lev / 7;
+				add_skill = 1 - p_ptr->lev / 7;
 			}
 			if (p_ptr->ammo_tval == TV_BOLT)
 			{
-				add_skill = 0 - p_ptr->lev / 7;
+				add_skill = 1 - p_ptr->lev / 7;
 			}
 			break;
 		}
@@ -2813,7 +2813,7 @@ static sint add_special_missile_skill(byte pclass)
 			/* Monks get a small bonus with slings. */
 			if (p_ptr->ammo_tval == TV_SHOT)
 			{
-				add_skill = p_ptr->lev / 7;
+				add_skill = 1 - p_ptr->lev / 7;
 			}
 		}
 	}
@@ -2987,7 +2987,7 @@ static void calc_bonuses(void)
 		monk_arm_wgt += p_ptr->equipment[EQUIP_HANDS].weight;
 		monk_arm_wgt += p_ptr->equipment[EQUIP_FEET].weight;
 
-		if (monk_arm_wgt > (100 + (p_ptr->lev * 4)))
+		if (monk_arm_wgt > (150 + (p_ptr->lev * 4)))
 		{
 			/* Burdened */
 			p_ptr->state.monk_armour_stat = TRUE;
@@ -3423,7 +3423,7 @@ static void calc_bonuses(void)
 	/* Temporary "slow" */
 	if (query_timed(TIMED_SLOW))
 	{
-		p_ptr->pspeed -= 10;
+		p_ptr->pspeed -= 7;
 	}
 
 	/* Temporary "telepathy" */
@@ -3441,7 +3441,7 @@ static void calc_bonuses(void)
 	/* Temporary infravision boost */
 	if (query_timed(TIMED_INFRA))
 	{
-		p_ptr->see_infra += 3;
+		p_ptr->see_infra += 4;
 	}
 
 	/* Temporary immunity */

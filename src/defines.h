@@ -854,7 +854,7 @@
 /*
  * Refueling constants
  */
-#define FUEL_TORCH      5000	/* Maximum amount of fuel in a torch */
+#define FUEL_TORCH      6000	/* Maximum amount of fuel in a torch */
 #define FUEL_LAMP       15000	/* Maximum amount of fuel in a lantern */
 
 
@@ -918,9 +918,9 @@
 /*
  * Player regeneration constants
  */
-#define PY_REGEN_NORMAL         197	/* Regen factor*2^16 when full */
-#define PY_REGEN_WEAK           98	/* Regen factor*2^16 when weak */
-#define PY_REGEN_FAINT          33	/* Regen factor*2^16 when fainting */
+#define PY_REGEN_NORMAL         200	/* Regen factor*2^16 when full */
+#define PY_REGEN_WEAK           100	/* Regen factor*2^16 when weak */
+#define PY_REGEN_FAINT          50	/* Regen factor*2^16 when fainting */
 #define PY_REGEN_HPBASE         1442	/* Min amount hp regen*2^16 */
 #define PY_REGEN_MNBASE         524	/* Min amount mana regen*2^16 */
 

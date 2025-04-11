@@ -289,11 +289,11 @@ void sense_item(object_type *o_ptr, bool heavy, bool wield, bool msg)
  * Sense the inventory
  *
  *   Class 0 = Warrior --> fast and heavy
- *   Class 1 = Mage    --> slow and light
+ *   Class 1 = Mage    --> okay and light
  *   Class 2 = Priest  --> fast but light
  *   Class 3 = Rogue   --> okay and heavy
- *   Class 4 = Ranger  --> slow but heavy  (changed!)
- *   Class 5 = Paladin --> slow but heavy
+ *   Class 4 = Ranger  --> fast but light  
+ *   Class 5 = Paladin --> okay and heavy
  */
 static void sense_inventory(void)
 {
@@ -316,7 +316,7 @@ static void sense_inventory(void)
 		case CLASS_WARRIOR:
 		{
 			/* Good (heavy) sensing */
-			difficulty = 9000L;
+			difficulty = 7000L;
 
 			/* Done */
 			break;
@@ -326,7 +326,7 @@ static void sense_inventory(void)
 		case CLASS_HIGH_MAGE:
 		{
 			/* Very bad (light) sensing */
-			difficulty = 240000L;
+			difficulty = 12000L;
 
 			/* Done */
 			break;
@@ -335,7 +335,7 @@ static void sense_inventory(void)
 		case CLASS_PRIEST:
 		{
 			/* Good (light) sensing */
-			difficulty = 10000L;
+			difficulty = 9000L;
 
 			/* Done */
 			break;
@@ -344,7 +344,7 @@ static void sense_inventory(void)
 		case CLASS_ROGUE:
 		{
 			/* Okay sensing */
-			difficulty = 20000L;
+			difficulty = 6000L;
 
 			/* Done */
 			break;
@@ -353,7 +353,7 @@ static void sense_inventory(void)
 		case CLASS_RANGER:
 		{
 			/* Bad (heavy) sensing */
-			difficulty = 95000L;
+			difficulty = 8000L;
 
 			/* Done */
 			break;
@@ -362,7 +362,7 @@ static void sense_inventory(void)
 		case CLASS_PALADIN:
 		{
 			/* Bad (heavy) sensing */
-			difficulty = 77777L;
+			difficulty = 8000L;
 
 			/* Done */
 			break;
@@ -371,7 +371,7 @@ static void sense_inventory(void)
 		case CLASS_WARRIOR_MAGE:
 		{
 			/* Bad sensing */
-			difficulty = 75000L;
+			difficulty = 7500L;
 
 			/* Done */
 			break;
@@ -380,7 +380,7 @@ static void sense_inventory(void)
 		case CLASS_MINDCRAFTER:
 		{
 			/* Bad sensing */
-			difficulty = 55000L;
+			difficulty = 8500L;
 
 			/* Done */
 			break;
@@ -389,7 +389,7 @@ static void sense_inventory(void)
 		case CLASS_CHAOS_WARRIOR:
 		{
 			/* Bad (heavy) sensing */
-			difficulty = 80000L;
+			difficulty = 8000L;
 
 			/* Done */
 			break;
@@ -398,9 +398,8 @@ static void sense_inventory(void)
 		case CLASS_MONK:
 		{
 			/* Okay sensing */
-			difficulty = 20000L;
-			heavy = FALSE;
-
+			difficulty = 9000L;
+			
 			/* Done */
 			break;
 		}
@@ -431,7 +430,9 @@ static void sense_inventory(void)
 	heavy = class_info[p_ptr->rp.pclass].heavy_sense;
 
 	/* Hack: force heavy sensing for humans */
+	/* Re-hack: force heavy sensing for dwarves */
 	if (p_ptr->rp.pclass == RACE_HUMAN) heavy = TRUE;
+	if (p_ptr->rp.pclass == RACE_DWARF) heavy = TRUE;
 
 	/*** Sense everything ***/
 
@@ -806,7 +807,7 @@ void notice_lite_change(object_type *o_ptr)
 	else if ((o_ptr->timeout < 100) && (!(o_ptr->timeout % 10)))
 	{
 		if (disturb_minor) disturb(FALSE);
-		msgf("Your light is growing faint.");
+		msgf("Your light is dimming.");
 	}
 }
 
@@ -1031,7 +1032,7 @@ static void process_world(void)
 
 	if (p_ptr->state.mon_fight)
 	{
-		msgf("You hear noise.");
+		msgf("You hear noises.");
 	}
 
 	/*** Handle the wilderness/town (sunshine) ***/
@@ -1225,7 +1226,7 @@ static void process_world(void)
       } else
       if (f_ptr->flags2 & FF_ACID) {
 		    damage = resist((adj_depth / 2 + 1)-dam_acid_adjust(), res_acid_lvl);
-		    message = "The %s burns you!";
+		    message = "The %s dissolves you!";
       } else
       if (f_ptr->flags2 & FF_ELEC) {
 		    damage = resist((adj_depth / 2 + 1)-dam_elec_adjust(), res_elec_lvl);
@@ -1338,7 +1339,7 @@ static void process_world(void)
 		}
 		else
 		{
-			message = "The acid burns you!";
+			message = "The acid dissolves you!";
 			hit_from = "deep acid";
 		}
 

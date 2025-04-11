@@ -1355,7 +1355,7 @@ static cptr hero_title[3][4][10] =
 		/* Warrior */
 		{
 			"",
-			" Brute",
+			" Brawler",
 			" Fighter",
 			" Warrior",
 			" Hero",
@@ -1413,7 +1413,7 @@ static cptr hero_title[3][4][10] =
 		/* Warrior */
 		{
 			"",
-			" Brute",
+			" Brawler",
 			" Shieldmaiden",
 			" Warrior",
 			" Heroine",
@@ -1486,14 +1486,14 @@ static cptr hero_title[3][4][10] =
 		{
 			"",
 			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
+			" Pickpocket ",
+			" Cutpurse ",
+			" Lightfingers ",
+			" Cutthroat ",
+			" Ambusher ",
+			" Alleys master ",
+			" Shadowstealer ",
+			" Shadowruler ",
 		},
 
 		/* Priest */

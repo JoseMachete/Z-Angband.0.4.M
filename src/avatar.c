@@ -137,6 +137,7 @@ void get_virtues(void)
 			break;
 		case CLASS_ROGUE:
 			p_ptr->vir_types[i++] = V_HONOUR;
+			p_ptr->vir_types[i++] = V_INDIVIDUALISM;
 			break;
 		case CLASS_RANGER:
 			p_ptr->vir_types[i++] = V_NATURE;

@@ -598,7 +598,7 @@ bool monster_death(int m_idx, bool explode)
 		/* Mega-Hack -- Name the shirt */
 		q_ptr->xtra_name =
 			quark_add
-			("'I killed the GHB and all I got was this lousy t-shirt!'");
+			("'I killed the GHB and this badass T-shirt magically dropped from nowhere!!");
 
 		q_ptr->flags[2] |= (TR2_IGNORE_ACID | TR2_IGNORE_ELEC |
 						  TR2_IGNORE_FIRE | TR2_IGNORE_COLD);
@@ -1171,15 +1171,15 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
 		 * Run (sometimes) if at 10% or less of max hit points,
 		 * or (usually) when hit for half its current hit points
 		 */
-		if ((randint1(10) >= percentage) ||
+		if ((randint1(7) >= percentage) ||
 			((dam >= m_ptr->hp) && (randint0(100) < 80)))
 		{
 			/* Hack -- note fear */
 			(*fear) = TRUE;
 
 			/* XXX XXX XXX Hack -- Add some timed fear */
-			m_ptr->monfear = (randint1(10) +
-							  (((dam >= m_ptr->hp) && (percentage > 7)) ?
+			m_ptr->monfear = (randint1(7) +
+							  (((dam >= m_ptr->hp) && (percentage > 5)) ?
 							   20 : ((11 - percentage) * 5)));
 		}
 	}
@@ -1829,7 +1829,7 @@ void gain_level_reward(int chosen_reward)
 		}
 		case REW_CHAOS_WP:
 		{
-			msgf("The voice of %s booms out:",
+			msgf("The voice of %s comes from the void:",
 					   chaos_patrons[patron]);
 			msgf("'Thy deed hath earned thee a worthy blade.'");
 
