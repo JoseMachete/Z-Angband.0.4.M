@@ -1,15 +1,40 @@
-The is my personal copy of z+angband. It is based on z+angband 0.3.3beta.
+The following is a extensively reforge of my cloned Blubaron's repo of z+angband. 
+It is based on z+angband 0.3.3beta.
 
-It has some severe balance changes from the released Z+, some of which may
-or may not work. Some notes about my changes area in notes_changes.txt. Some
-of my notes about things I am thinking about doing are in notes_maybe_do.txt.
-
-Some of these changes are not well tested.
-
-The makefiles may or may not work, since I have added and removed files.
 With an IDE, you might want to follow the visual studio step by step,
-which is in this directory.
+which is BlueBaron's repo on GitHub.
 
-I am using a version number of 0.3.4 to distinguish it from the original.
+Blubaron himself was using a version number of 0.3.4 to distinguish it from the original.
 
-The orignial readme for Z+Angband 0.3.3beta is in z_readme.
+The original readme for Z+Angband 0.3.3beta is in z_readme.
+
+******
+While I'm not claiming any big modification on Blubaron's code release, just couple of lines added here and there, my runs are way too much re-balanced to be of the same game, so, I'm calling this version Z-Angband 0.4 Machete, since a Machete is a special weapon I included in the game for my own personal pleasure.
+At this point -mid april'25, I'm having doubts about if I should keep the name and just add a mark after it to differentiate from Blubaron's, or I should just re-name this fork. The reasons are getting more and more evident, as I'm steering the game towards a more DnD-first-generation environment; reduced the presence of traps, reduced considerably the presence of open doors -that just don't happen in a normal DnD session unless some NPC or smart enough monster spikes it up, which is unusual to say the least, residual use of closed doors for the same reasons of the open doors.
+Introduced curtains in this fork, thus introducing a new concept with a lot of opportunities, that's it, monsters can follow your scent/noises and they can cross the curtains -an they stay drawn all the time like a good heavy curtain, without the player noticing or getting a (minor_disturb) about it. Cool, imho.
+I am currently, with the help of a small python tool, translating all the HP of all the monsters into D8 rolls, and once that task is done, I'm gonna start re-working on the Armor class as well. The goal is obvious, to have them all not under the same Ring but under the same Rule.
+
+******
+
+******
+
+So far, some of the major changes are the following :
+
+-Re-vamped visuals of the dungeon. Dungeons look now colourful in accordance with real colours of those. Blue quartz, red glowing magma, mossy walls, blood stained walls... et cetera.
+-Implementation of curtains on the dungeons, blocking light and sight from either ways.
+-Added non moving forms of illumination. No spoilers.
+-No longer "generic" monsters with no personality. I have made a huge work on documenting the monsters. Taken from reality and adapted to  run in my own DnD sessions, now,  i.e., centipedes are based on real species of scolopendras and millipedes. Snakes are also re-worked and re-balanced based on real snakes. I.e.,
+the generic white /yellow/grey et cetera, now have their own information. Up to the player to find out by her/himself.
+The above applies for "r"mouses/rats, quadrupeds,  and some insects.
+-Numerous species of classic fantasy monsters have been re-worked under my own DnD experience (DungeonMastering role games for more than three decades...) :
+Kobolds, Orcs, Goblins, Ghouls. Lovecraftian Byakhess, and many more have been completely and extensively re-vamped.
+-Hit points, experience, armor class, where-to-find and several more characteristic of many monsters have been syphoned also DnD/Runequest/LOTR/L5R re-designed.
+-Long a$$ of fixed features in monsters. 
+   There were many of the monsters with repeated flags, or flags that negate other flags. I don't know
+   why this was like that, I'm assuming for years of inheriting the info files and using them in the
+   newly compiled game but no real close to them, since the task is proving tedious and time consuming.
+   Re-organized and tidied up the whole monsters' info then; 
+   some of the work done on the monsters include standardizing their HP rolls into D8 rolls, for a better
+   idea of their level and power. (I include the little tool in python that I used for it)
+-Scores of added stuff, counting monsters, objects, and terrain features.
+-
