@@ -1,8 +1,9 @@
 
 
                             ***********************
-                            **  Z+Angband a.b.c  **
+                            **  Z-Angband 0.4.M  **
                             *********(beta)********
+                            *--Machete's Edition--*
 
               Based on Moria:    Copyright (c) 1985 Robert Alan Koeneke
                   and Umoria:    Copyright (c) 1989 James E. Wilson
@@ -11,8 +12,10 @@
                                  Robert Ruehlmann < rr9@angband.org >
                                  The ZAngband DevTeam
                               
-                   Z+Angband:    Mangojuice < mangojuice75@gmail.com >
-
+                   Z+Angband 0.3.3:    Mangojuice < mangojuice75@gmail.com >
+				   Z-Angband 0.4.0:    @Blubaron
+				   Z-Angband 0.4.0 ME: JMachete <lellamaronmachete@gmail.com>
+				   
          Post all comments, bug reports, etc. on the Angband forums
                    at "http://angband.oook.cz/forum" (Variants)
 
