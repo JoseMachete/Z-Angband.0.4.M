@@ -699,7 +699,11 @@ L:MENTT:	do_turn = TRUE
 L:MENTT:	if (bAnd(race.flags[1], RF1_OPEN_DOOR) ~= 0)
 L:MENTT:		and (allow_open == TRUE)
 L:MENTT:		and monster_can_open(race, field.counter) == TRUE then
+L:MENTT:		msgf("You hear a door burst open!")
+L:MENTT:		if (disturb_minor == TRUE) then disturb(FALSE) end
 L:MENTT:		did_open_door = TRUE
+L:MENTT:		-- Fall through opening
+L:MENTT:		do_move = TRUE
 L:MENTT:		deleteme()
 L:MENTT:	end
 L:MENTT:end
@@ -737,7 +741,7 @@ L:MENTT:	do_move = FALSE
 L:MENTT:	if (bAnd(race.flags[1], RF1_BASH_DOOR) ~= 0)
 L:MENTT:		and (allow_open == TRUE)
 L:MENTT:		and monster_can_open(race, field.counter) == TRUE then
-L:MENTT:		msgf("You hear a door burst open!")
+L:MENTT:		msgf("You hear a door crash open!")
 L:MENTT:		if (disturb_minor == TRUE) then disturb(FALSE) end
 L:MENTT:		did_bash_door = TRUE
 L:MENTT:		-- Fall through opening
@@ -861,7 +865,7 @@ L:PENTER:do_cmd_store(field)
 
 # Home
 N:41:Home
-G:8:G
+G:H:G
 W:100:3:0
 I:FEAT | VIS | MARK | NFT_LOOK | NO_OBJECT | PERM
 D:7:0:0:100:100:100:100:0
