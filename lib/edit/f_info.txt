@@ -85,7 +85,7 @@ F:PWALK | PPASS
 
 N:4:open door
 G:':U
-P:7
+P:5
 F:PWALK | PPASS | MWALK | MPASS | DOOR | CLOSEABLE | ICKY | OBJECT | MARK
 K:CLOSE:32:100
 
@@ -94,7 +94,7 @@ K:CLOSE:32:100
 
 N:5:drawn curtain
 G:':b
-P:15
+P:12
 F:PWALK | PPASS | MWALK | MPASS | ICKY | MARK | OBJECT | NO_LOS
 
 # 0x06 --> up stairs
@@ -154,7 +154,7 @@ F:PWALK | PPASS | MWALK | MPASS
 
 N:32:door
 G:+:U
-P:10
+P:13
 F:PPASS | MPASS | NO_LOS | DOOR | ICKY | OBJECT | MARK | CLOSED
 K:OPEN:4:100
 K:BASH:149:100
@@ -171,7 +171,7 @@ K:TUNNEL:1:100
 
 N:48:granite wall
 G:#:W
-P:10:30
+P:10:20
 F:PPASS | MPASS | NO_LOS | DOOR | HIDDEN | ICKY | OBJECT | MARK | DIG
 K:SEARCH:146:100
 K:TUNNEL:1:100
@@ -211,14 +211,14 @@ F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG |
 
 N:54:magma vein with treasure
 G:*:o
-P:19:10
+P:15:10
 F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG | DIG_GOLD
 
 # 0x37 --> quartz vein + known treasure
 
 N:55:quartz vein with treasure
 G:*:B
-P:19:20
+P:15:20
 F:PPASS | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG | DIG_GOLD
 
 # 0x38 --> granite wall -- basic

@@ -1168,9 +1168,9 @@ P:19:1d4:-2:0:0
 
 N:114:& Partial Plate Armor~
 G:[:W
-I:37:12:0
+I:37:15:0
 W:50:0:260:2000
-A:50/1:70:1
+A:50/1
 P:22:1d6:-2:0:0
 D:A suit of chain mail with plates in a few key places, where they are most
 D: needed and least likely to hamper movement.
@@ -7261,3 +7261,14 @@ F:EASY_KNOW | NO_FLAVOR
 L:USE:  msgf("Like molten lava poured straight on your stomach, warm and heavy.")
 D:Made from plump helmets in the cold darkness of the mine, this heady brew equals in quality to those served
 D: in the Halls of Koganusan. 
+
+N:719:& Brewing of Healing Herbs
+G:!:U
+I:75:34:500
+W:1:1:4:35
+A:1/1
+F:EASY_KNOW
+L:USE:  ident = cure_potion(25, TRUE, TRUE, TRUE)
+L:USE:  msgf("Just a small sip, yet makes you feel a bit better.") 
+D:This little flask contains a popular yet useful concoction of healing herbs, little more than
+D: a swig but better than nothing.

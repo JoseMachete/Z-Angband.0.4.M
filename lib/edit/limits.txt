@@ -20,7 +20,7 @@ M:g:98
 M:F:193
 
 # Maximum number of object kinds
-M:K:719
+M:K:720
 
 # Maximum number of artifacts
 M:A:135
@@ -29,7 +29,7 @@ M:A:135
 M:E:140
 
 # Maximum number of monster races, including those reserved as "heroes"
-M:R:1092
+M:R:1093
 
 # Number of monster races reserved as "heroes"
 M:H:100
