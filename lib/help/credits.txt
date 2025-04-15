@@ -9,9 +9,10 @@
                and Z+Angband:    Mangojuice < mangojuice75@gmail.com >
                               
                    Z-Angband:    Brett Reid < baronblu@gmail.com >
+				Z-Angband ME:    Jose Machete < lellamaronmachete@gmail.com>
 
 Post all comments, bug reports, etc. on the Angband forums 
-at "http://angband.oook.cz/forum" (Variants)
+at "https://angband.live" (Variants)
 
 Additional Information:
 
