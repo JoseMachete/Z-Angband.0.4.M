@@ -29,7 +29,7 @@ M:A:135
 M:E:140
 
 # Maximum number of monster races, including those reserved as "heroes"
-M:R:1093
+M:R:1097
 
 # Number of monster races reserved as "heroes"
 M:H:100
