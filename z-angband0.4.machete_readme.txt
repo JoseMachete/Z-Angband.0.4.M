@@ -15,7 +15,7 @@ Introduced curtains in this fork, thus introducing a new concept with a lot of o
 I am currently with the help of a small python tool, translating all the HP of all the monsters into D8 rolls, and once that task is done, I'm gonna start re-working on the Armor class as well. The goal is obvious, to have them all not under the same Ring but under the same Rule.
 
 ******
-This cloned source code has been compiled as per today: Toads'day 10th of April, 2025. Month of the Force.
+This cloned source code has been failed to compile as per today: Toads'day 10th of April, 2025. Month of the Force. But I will succeed, for I'm not alone.
 ******
 
 So far, some of the major changes are the following :
@@ -26,13 +26,16 @@ So far, some of the major changes are the following :
 -No longer "generic" monsters with no personality. I have made a huge work on documenting the monsters. Taken from reality and adapted to  run in my own DnD sessions, now,  i.e., centipedes are based on real species of scolopendras and millipedes. Snakes are also re-worked and re-balanced based on real snakes. I.e.,
 the generic white /yellow/grey et cetera, now have their own information. Up to the player to find out by her/himself.
 The above applies for "r"mouses/rats, quadrupeds,  and some insects.
+-About the 'Bugs' cathegory, the slot was unused and I wanted to import the infamous Grid Bugs from Hack'eEM (NetHack), so I took the task seriously and introduced a whole bunch
+  bugs to pester the player.
 -Numerous species of classic fantasy monsters have been re-worked under my own DnD experience (DungeonMastering role games for more than three decades...) :
 Kobolds, Orcs, Goblins, Ghouls. Lovecraftian Byakhess, and many more have been completely and extensively re-vamped.
+-Added some of Robert Erwin Howard's bestiary from the Hyborian Age. Don't worry, Conan is not out there to kill you... ?
 -Hit points, experience, armor class, where-to-find and several more characteristic of many monsters have been syphoned also DnD/Runequest/LOTR/L5R re-designed.
 -Long a$$ of fixed features in monsters. 
    There were many of the monsters with repeated flags, or flags that negate other flags. I don't know
    why this was like that, I'm assuming for years of inheriting the info files and using them in the
-   newly compiled game but no real close to them, since the task is proving tedious and time consuming.
+   newly compiled game but no real close look to them, since the task is proving to be tedious and time consuming.
    Re-organized and tidied up the whole monsters' info then; 
    some of the work done on the monsters include standardizing their HP rolls into D8 rolls, for a better
    idea of their level and power. (I include the little tool in python that I used for it)
