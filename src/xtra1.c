@@ -833,7 +833,7 @@ static void prt_hunger(void)
 	/* Normal */
 	else if (p_ptr->food < PY_FOOD_FULL)
 	{
-		put_fstr(COL_HUNGRY, Term->hgt - 1, "      ");
+		put_fstr(COL_HUNGRY, Term->hgt - 1, CLR_WHITE "Satiated");
 	}
 
 	/* Full */
