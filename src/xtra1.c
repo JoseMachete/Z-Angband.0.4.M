@@ -2799,11 +2799,11 @@ static sint add_special_missile_skill(byte pclass)
 			 */
 			if (p_ptr->ammo_tval == TV_SHOT)
 			{
-				add_skill = 1 - p_ptr->lev / 7;
+				add_skill = 2 - p_ptr->lev / 7;
 			}
 			if (p_ptr->ammo_tval == TV_BOLT)
 			{
-				add_skill = 1 - p_ptr->lev / 7;
+				add_skill = 2 - p_ptr->lev / 7;
 			}
 			break;
 		}
