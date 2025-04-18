@@ -286,6 +286,7 @@ L:DESC:	return "ball of the elements (800, rad. 3) every 250-500 turns"
 # The Multi-Hued Dragon Scale Mail 'Razorback'
 # Was (-2) INT | WIS | STEALTH | HIDE_TYPE, (-3) to hit, 30 pounds (?)
 
+### Here begin the Armor section.
 N:16:'Razorback'
 I:38:6:0
 W:90:9:500:40000
@@ -976,7 +977,7 @@ L:BONUS:	b.pspeed = (player.lev + 4) / 5
 L:SPOIL:	return "+1 speed / 5 levels"
 D:These ordinary looking boots are said to grow with their wearer.
 
-
+### Here begin the Weapon section ###
 # The Main Gauche of Maedhros
 
 N:64:of Maedhros
@@ -1997,3 +1998,42 @@ L:BONUS:	if player.rp.pclass == CLASS_MONK then
 L:BONUS:		b.pspeed = (player.lev + 9) / 10
 L:BONUS:	end
 L:SPOIL:return "Speed +1 / 10 levels (monk)"
+
+
+# The Dagger from R'lyeh
+
+# Variable bonus: +1 int per 10 levels (rounded up)
+N:134:from R'lyeh
+I:23:4:0
+W:9:30:12:10000
+P:0:2d6:5:5:0
+F:SLAY_ORC | RES_POIS | RES_DISEN | ACTIVATE | SHOW_MODS | BRAND_POIS | 
+F:THROW | RETURN | INSTA_ART | SLAY_DEMON | SLAY_UNDEAD
+L:USE:	msgf("Your dagger wails horribly when wielded...")
+L:USE:	local success; local dir; success, dir = get_aim_dir()
+L:USE:	if not success then return end
+L:USE:	fire_ball(GF_POIS, dir, 25, 3)
+L:USE:	object.timeout = rand_range(4, 8)
+L:DESC:	return "stinking cloud (25) every 4-8 turns"
+L:BONUS:	b.stat[A_INT] = (player.lev + 9) / 10
+L:SPOIL:	return "+1 INT / 10 levels"
+
+# The Whip Of The Vermonts
+# Falls into maces & flais cathegory
+N:135:'Vampslasher'
+I:21:13:2
+W:35:4:150:9000
+P:0:3d8:6:8:0
+F:STEALTH |
+F:SLAY_EVIL | BRAND_FIRE | RES_FIRE | RES_CONF | ACTIVATE |
+F:SHOW_MODS | LITE | INSTA_ART | SLAY_DEMON | SLAY_UNDEAD
+L:USE:	msgf("Your whip is engulfed in mystical flames!")
+L:USE:	local success; local dir; success, dir = get_aim_dir()
+L:USE:	if not success then return end
+L:USE:	fire_ball(GF_FIRE, dir, 50)
+L:USE:	object.timeout = 10
+L:DESC:	return "burns monster every 10 turns"
+D:The ancient and legendary warwhip used by the Vermont Family in their mission of annihilation
+D: of Dracula and his servants.
+
+

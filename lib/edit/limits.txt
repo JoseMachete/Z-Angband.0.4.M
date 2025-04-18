@@ -17,19 +17,19 @@ V:0.4.0
 M:g:98
 
 # Maximum number of feature types
-M:F:193
+M:F:194
 
 # Maximum number of object kinds
-M:K:720
+M:K:721
 
 # Maximum number of artifacts
-M:A:135
+M:A:136
 
 # Maximum number of ego-item types
 M:E:140
 
 # Maximum number of monster races, including those reserved as "heroes"
-M:R:1097
+M:R:1105
 
 # Number of monster races reserved as "heroes"
 M:H:100

@@ -822,5 +822,13 @@ G:':b
 P:14
 F:PWALK | PPASS | NO_LOS | MWALK | MPASS | ICKY | OBJECT | MARK | OBJECT
 
+### Boulders ---> project to implemtenting boulders, idea from NetHack, NO_LOS for now but maybe if they work
+# I can give it a different approach and make them LOS, as you can kind of guess what's in the other side,
+# but you cannot pass. They are diggable as rubble piles, and can contain objects buried in them.
+#0x31 --> boulder
+N:193:boulder rock
+G:0:D
+P:10:10
+F:PPASS | MPASS | MWALK | MPASS | NO_LOS | ICKY | OBJECT | MARK | DIG | DIG_OBJ
 
 
